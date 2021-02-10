@@ -101,3 +101,4 @@ ENV SYMFONY_PHPUNIT_VERSION=9
 
 ENTRYPOINT ["docker-entrypoint"]
 CMD ["./entrypoint.sh"]
+EXPOSE 80
