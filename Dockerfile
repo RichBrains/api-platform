@@ -91,9 +91,9 @@ RUN chmod +x /usr/local/bin/docker-healthcheck
 HEALTHCHECK --interval=10s --timeout=3s --retries=3 CMD ["docker-healthcheck"]
 
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY docker/nginx/entrypoint.sh /entrypoint.sh
 
 COPY docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+COPY docker/nginx/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint
 RUN mkdir -p /run/nginx && mkdir -p /init/ && chmod 777 /entrypoint.sh
 
