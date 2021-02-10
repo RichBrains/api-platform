@@ -22,7 +22,7 @@ RUN set -eux; \
 		zlib-dev \
 	; \
 	\
-	docker-php-ext-configure zip pdo_mysql; \
+	docker-php-ext-configure zip; \
 	docker-php-ext-install -j$(nproc) \
 		intl \
         pdo_mysql \
@@ -90,7 +90,7 @@ RUN chmod +x /usr/local/bin/docker-healthcheck
 
 HEALTHCHECK --interval=10s --timeout=3s --retries=3 CMD ["docker-healthcheck"]
 
-COPY default.conf /etc/nginx/conf.d/default.conf
+COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY docker/nginx/entrypoint.sh /entrypoint.sh
 
 COPY docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
