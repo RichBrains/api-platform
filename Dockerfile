@@ -11,7 +11,6 @@ RUN apk add --no-cache \
 		gettext \
         nginx \
         inkscape
-	;
 
 ARG APCU_VERSION=5.1.19
 RUN set -eux; \
