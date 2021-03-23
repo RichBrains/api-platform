@@ -28,6 +28,9 @@ RUN set -eux; \
 		pdo_pgsql \
 		zip \
 	; \
+	docker-php-ext-enable \
+		opcache \
+	; \
 	runDeps="$( \
 		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local/lib/php/extensions \
 			| tr ',' '\n' \
