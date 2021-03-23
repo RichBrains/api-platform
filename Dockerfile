@@ -12,7 +12,6 @@ RUN apk add --no-cache \
         nginx \
         inkscape
 
-ARG APCU_VERSION=5.1.19
 RUN set -eux; \
 	apk add --no-cache --virtual .build-deps \
 		$PHPIZE_DEPS \
@@ -29,14 +28,7 @@ RUN set -eux; \
 		pdo_pgsql \
 		zip \
 	; \
-	pecl install \
-		apcu-${APCU_VERSION} \
-	; \
 	pecl clear-cache; \
-	docker-php-ext-enable \
-		apcu \
-		opcache \
-	; \
 	\
 	runDeps="$( \
 		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local/lib/php/extensions \
