@@ -24,12 +24,10 @@ RUN set -eux; \
 	docker-php-ext-configure zip; \
 	docker-php-ext-install -j$(nproc) \
 		intl \
-        pdo_mysql \
+                pdo_mysql \
 		pdo_pgsql \
 		zip \
 	; \
-	pecl clear-cache; \
-	\
 	runDeps="$( \
 		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local/lib/php/extensions \
 			| tr ',' '\n' \
