@@ -28,6 +28,7 @@ RUN set -eux; \
 		pdo_pgsql \
 		zip \
 	; \
+	pecl install redis && docker-php-ext-enable redis; \
 	docker-php-ext-enable \
 		opcache \
 	; \
