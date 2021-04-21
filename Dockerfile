@@ -33,6 +33,8 @@ RUN set -eux; \
 		apcu-${APCU_VERSION} \
 	; \
 	pecl clear-cache; \
+	# Install redis
+   	 pecl install redis && docker-php-ext-enable redis; \
 	docker-php-ext-enable \
 		apcu \
 		opcache \
